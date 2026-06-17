@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://c3mphsbqbbb4y"]
+
+[ext_resource type="PackedScene" uid="uid://bj7ubcic4mgt5" path="res://player/platformer/player.tscn" id="1_jf6x8"]
+[ext_resource type="Script" uid="uid://codtcs15bd8pc" path="res://player/platformer/camera.gd" id="2_el5ou"]
+[ext_resource type="PackedScene" uid="uid://btwc0veryc8qb" path="res://Scenes/Hazards/spike.tscn" id="3_rpaqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el5ou"]
+size = Vector2(376, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0gsd"]
+size = Vector2(346, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5cmb"]
+size = Vector2(24, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ex6ca"]
+size = Vector2(160, 15.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpaqd"]
+size = Vector2(82, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh0w5"]
+size = Vector2(32.5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14j26"]
+size = Vector2(49, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ei6di"]
+size = Vector2(49, 84)
+
+[node name="Main Scene" type="Node2D" unique_id=706466564]
+
+[node name="player" type="Node" parent="." unique_id=1560144604]
+
+[node name="player" parent="player" unique_id=244092361 instance=ExtResource("1_jf6x8")]
+position = Vector2(144, 208)
+
+[node name="prototype" type="StaticBody2D" parent="." unique_id=1545405994]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prototype" unique_id=1000625234]
+position = Vector2(188, 240)
+shape = SubResource("RectangleShape2D_el5ou")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="prototype" unique_id=652044289]
+position = Vector2(545, 248)
+shape = SubResource("RectangleShape2D_i0gsd")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="prototype" unique_id=129529103]
+position = Vector2(380, 96)
+shape = SubResource("RectangleShape2D_r5cmb")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="prototype" unique_id=966462137]
+position = Vector2(520, 120)
+shape = SubResource("RectangleShape2D_ex6ca")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="prototype" unique_id=324820870]
+position = Vector2(41, 192)
+shape = SubResource("RectangleShape2D_rpaqd")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="prototype" unique_id=1399416291]
+position = Vector2(128.25, 132)
+shape = SubResource("RectangleShape2D_vh0w5")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="prototype" unique_id=173176504]
+position = Vector2(200, 172)
+shape = SubResource("RectangleShape2D_14j26")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="prototype" unique_id=1462171988]
+position = Vector2(280, 176)
+shape = SubResource("RectangleShape2D_ei6di")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="Camera Node" type="Node" parent="." unique_id=976252406]
+
+[node name="Camera" type="Camera2D" parent="Camera Node" unique_id=1912883421]
+position = Vector2(80, 168)
+offset = Vector2(60, 0)
+zoom = Vector2(5, 5)
+process_callback = 0
+script = ExtResource("2_el5ou")
+
+[node name="BG" type="Node" parent="." unique_id=1836616765]
+
+[node name="ColorRect" type="ColorRect" parent="BG" unique_id=1367092585]
+z_index = -41
+offset_left = -272.0
+offset_top = 40.0
+offset_right = 928.0
+offset_bottom = 384.0
+color = Color(0.21604466, 0.21604472, 0.21604463, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="BG" unique_id=1763718830]
+z_index = -41
+offset_left = 376.0
+offset_top = 136.0
+offset_right = 400.0
+offset_bottom = 176.0
+color = Color(0.14, 0.14, 0.14, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="BG" unique_id=1418665767]
+z_index = -41
+offset_left = 208.0
+offset_top = 136.0
+offset_right = 296.0
+offset_bottom = 160.0
+color = Color(0.14, 0.14, 0.14, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="BG" unique_id=435560474]
+z_index = -41
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 56.0
+offset_bottom = 184.0
+color = Color(0.14, 0.14, 0.14, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="BG" unique_id=1614260310]
+z_index = -41
+offset_left = 96.0
+offset_top = 56.0
+offset_right = 144.0
+offset_bottom = 232.0
+color = Color(0.14, 0.14, 0.14, 1)
+
+[node name="Spike" parent="." unique_id=1448132383 instance=ExtResource("3_rpaqd")]
+position = Vector2(216, 216)
+
+[node name="Spike2" parent="." unique_id=210531920 instance=ExtResource("3_rpaqd")]
+position = Vector2(199.99998, 167.99997)

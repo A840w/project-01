@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://byu11fd374ey2"]
+
+[ext_resource type="Script" uid="uid://xwikknhcrgjo" path="res://Scripts/scene_change_button.gd" id="1_5rgsp"]
+
+[node name="Scene Change Button" type="TextureButton" unique_id=1521430867]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5rgsp")

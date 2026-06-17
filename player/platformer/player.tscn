@@ -1,0 +1,280 @@
+[gd_scene format=3 uid="uid://bj7ubcic4mgt5"]
+
+[ext_resource type="Script" uid="uid://cnk608wqbfb8b" path="res://player/platformer/player.gd" id="1_plsav"]
+[ext_resource type="Texture2D" uid="uid://cq6gnkksalhyk" path="res://Texture/Fx.png" id="2_0hcwp"]
+[ext_resource type="Script" uid="uid://bqb60ryfcvliy" path="res://player/platformer/reset_scene_button.gd" id="3_qfq5r"]
+[ext_resource type="PackedScene" uid="uid://davacdntlj8wp" path="res://Weapons/gun_1.tscn" id="5_4iwnh"]
+[ext_resource type="Texture2D" uid="uid://vavxdqb2ucfr" path="res://Texture/White .png" id="5_krnyx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfq5r"]
+atlas = ExtResource("2_0hcwp")
+region = Rect2(1, 1, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ar0"]
+atlas = ExtResource("2_0hcwp")
+region = Rect2(1, 1, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krnyx"]
+atlas = ExtResource("2_0hcwp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iwnh"]
+atlas = ExtResource("2_0hcwp")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uko1"]
+atlas = ExtResource("2_0hcwp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok5cc"]
+atlas = ExtResource("2_0hcwp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krnyx"]
+size = Vector2(6, 16)
+
+[sub_resource type="Animation" id="Animation_j0ar0"]
+resource_name = "fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.181, 0.895)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vrfpv"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Sprite2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 0.4506253, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.24000001, 0.24000001, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_krnyx"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4iwnh"]
+resource_name = "jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.105)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:skew")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8uko1"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.13962634]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8uko1"]
+_data = {
+&"fall": SubResource("Animation_j0ar0"),
+&"hit": SubResource("Animation_vrfpv"),
+&"idle": SubResource("Animation_krnyx"),
+&"jump": SubResource("Animation_4iwnh"),
+&"run": SubResource("Animation_8uko1")
+}
+
+[sub_resource type="Gradient" id="Gradient_j0ar0"]
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_krnyx"]
+gradient = SubResource("Gradient_j0ar0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.16666667)
+metadata/_snap_enabled = true
+metadata/_snap_count = 6
+
+[sub_resource type="Gradient" id="Gradient_krnyx"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="player" type="CharacterBody2D" unique_id=244092361]
+script = ExtResource("1_plsav")
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=365319186]
+
+[node name="Buttons" type="Control" parent="Hud" unique_id=1203089192]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(6, 6)
+
+[node name="Jump" type="TouchScreenButton" parent="Hud/Buttons" unique_id=1535893004]
+position = Vector2(162.66667, 77.333336)
+scale = Vector2(1.1428572, 1.1428572)
+texture_normal = SubResource("AtlasTexture_qfq5r")
+texture_pressed = SubResource("AtlasTexture_j0ar0")
+action = "Jump"
+
+[node name="Left" type="TouchScreenButton" parent="Hud/Buttons" unique_id=1622485214]
+position = Vector2(13.333334, 93.333336)
+rotation = -1.5707964
+texture_normal = SubResource("AtlasTexture_krnyx")
+texture_pressed = SubResource("AtlasTexture_4iwnh")
+action = "Left"
+
+[node name="Right" type="TouchScreenButton" parent="Hud/Buttons" unique_id=1091210317]
+position = Vector2(56, 77.333336)
+rotation = 1.5707964
+texture_normal = SubResource("AtlasTexture_krnyx")
+texture_pressed = SubResource("AtlasTexture_4iwnh")
+action = "Right"
+
+[node name="Right2" type="TouchScreenButton" parent="Hud/Buttons" unique_id=1293497]
+position = Vector2(162.66666, 58.666664)
+texture_normal = SubResource("AtlasTexture_8uko1")
+texture_pressed = SubResource("AtlasTexture_ok5cc")
+action = "shoot"
+
+[node name="Shake" type="TouchScreenButton" parent="Hud/Buttons" unique_id=612269242]
+self_modulate = Color(1, 0.6627451, 0.5686275, 1)
+position = Vector2(172.83333, 20.833332)
+texture_normal = SubResource("AtlasTexture_8uko1")
+texture_pressed = SubResource("AtlasTexture_ok5cc")
+action = "H"
+
+[node name="Node2D" type="Node2D" parent="Hud/Buttons/Shake" unique_id=430916962]
+position = Vector2(9.333332, 18.499998)
+scale = Vector2(0.082, 0.082)
+
+[node name="Label" type="Label" parent="Hud/Buttons/Shake/Node2D" unique_id=1274626845]
+offset_left = -89.500015
+offset_top = -25.333334
+offset_right = 50.499985
+offset_bottom = 41.666664
+theme_override_font_sizes/font_size = 48
+text = "Shake"
+
+[node name="Reset Scene" type="Button" parent="Hud/Buttons" unique_id=1032728966]
+layout_mode = 0
+offset_left = 178.66667
+offset_top = 2.666667
+offset_right = 189.33333
+offset_bottom = 13.333336
+script = ExtResource("3_qfq5r")
+
+[node name="Body" type="Node2D" parent="." unique_id=1455352863]
+
+[node name="Sprite2D" type="Sprite2D" parent="Body" unique_id=687517497]
+position = Vector2(1.7881393e-07, 0)
+scale = Vector2(0.195, 0.5)
+texture = ExtResource("5_krnyx")
+
+[node name="Gun" parent="Body" unique_id=86503975 instance=ExtResource("5_4iwnh")]
+z_index = 19
+position = Vector2(6, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1760005397]
+z_index = -1
+shape = SubResource("RectangleShape2D_krnyx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=824759892]
+libraries/ = SubResource("AnimationLibrary_8uko1")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1521962845]
+texture = SubResource("GradientTexture2D_krnyx")
+
+[node name="Jump Particle" type="CPUParticles2D" parent="." unique_id=1654067581]
+position = Vector2(0, 7.635)
+emitting = false
+lifetime = 0.55
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(3.985, 0.364)
+spread = 180.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 4.05
+initial_velocity_max = 4.05
+angular_velocity_min = -8.66
+angular_velocity_max = 8.85
+scale_amount_min = 0.5
+scale_amount_max = 0.74
+color_ramp = SubResource("Gradient_krnyx")
+
+[node name="aim" type="Marker2D" parent="." unique_id=1842806194]

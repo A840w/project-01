@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://btwc0veryc8qb"]
+
+[ext_resource type="Script" uid="uid://dbg52nhi8dydm" path="res://Scenes/Hazards/spike.gd" id="1_36msk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd5mk"]
+size = Vector2(2, 4)
+
+[node name="Spike" type="Area2D" unique_id=1448132383]
+script = ExtResource("1_36msk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1799798774]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_hd5mk")
+debug_color = Color(1, 0.19, 0.2034998, 1)

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bkjafnkada225"]
+
+[ext_resource type="Script" uid="uid://mtue0y8ugk7a" path="res://Systems/Transition/Transition.gd" id="1_lyx88"]
+
+[node name="TransitionNode" type="CanvasLayer" unique_id=1087703548]
+script = ExtResource("1_lyx88")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1123615275]
+modulate = Color(1, 1, 1, 0)
+z_index = 22
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true

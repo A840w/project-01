@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://davacdntlj8wp"]
+
+[ext_resource type="Script" uid="uid://071ndt20yotd" path="res://Weapons/Gun.gd" id="1_wqisl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_28n64"]
+size = Vector3(1.17, 2.755, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wqisl"]
+size = Vector3(3.131, 1.224, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ixlix"]
+size = Vector3(2.105, 0.545, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a8vp5"]
+size = Vector3(2.105, 0.545, 1)
+
+[node name="Gun" type="Node2D" unique_id=86503975]
+script = ExtResource("1_wqisl")
+
+[node name="Body" type="Node2D" parent="." unique_id=1150617987]
+
+[node name="Grip" type="MeshInstance2D" parent="Body" unique_id=1071527146]
+modulate = Color(0.56, 0.33432, 0.123200014, 1)
+position = Vector2(0, 1)
+mesh = SubResource("BoxMesh_28n64")
+
+[node name="Top" type="MeshInstance2D" parent="Body" unique_id=1802067839]
+modulate = Color(0.67, 0.6052334, 0.47570005, 1)
+position = Vector2(1, 0)
+mesh = SubResource("BoxMesh_wqisl")
+
+[node name="Top2" type="MeshInstance2D" parent="Body" unique_id=1868559087]
+modulate = Color(0.67, 0.6052334, 0.47570005, 1)
+position = Vector2(3, 0)
+mesh = SubResource("BoxMesh_ixlix")
+
+[node name="Top3" type="MeshInstance2D" parent="Body" unique_id=1265154881]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(2, 5.9604645e-08)
+scale = Vector2(2.8503566, 3.669725)
+mesh = SubResource("BoxMesh_a8vp5")
+
+[node name="Top4" type="MeshInstance2D" parent="Body" unique_id=892755740]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 1.5)
+scale = Vector2(1, 5.504587)
+mesh = SubResource("BoxMesh_a8vp5")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=212224425]
+position = Vector2(6, 0)
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1286766844]
+one_shot = true
