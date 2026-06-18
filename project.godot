@@ -17,7 +17,7 @@ config/tags=PackedStringArray("jam")
 config/tags=PackedStringArray("gamejam")
 >>>>>>> Stashed changes
 run/main_scene="uid://c3mphsbqbbb4y"
-config/features=PackedStringArray("4.6", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
