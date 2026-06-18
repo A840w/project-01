@@ -16,6 +16,9 @@ const SPEED := 230.0
 const JUMP_VELOCITY := -350.0
 const ACCEL := 15
 
+var gravity := 1000.0
+const MAX_GRAVITY := 1400.0
+
 const COYOTE_TIME := 0.1
 const JUMP_BUFFER_TIME := 0.1
 
@@ -23,7 +26,7 @@ var coyote_timer := 0.0
 var jump_buffer := 0.0
 
 var facing_right = true
-var jumped := false
+var is_grounded := true
 
 enum STATES { IDLE, RUN, JUMP, FALL}
 
@@ -43,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	# Gravity
 	if not is_on_floor():
 		# GRAVITY
-		velocity += get_gravity() * delta
+		velocity.y += gravity * delta
 		
 	
 	# squish and stretch
@@ -62,13 +65,14 @@ func _physics_process(delta: float) -> void:
 	# Coyote Time
 	if is_on_floor():
 		coyote_timer = COYOTE_TIME
+		gravity = lerp(gravity, 12.0, 12.0 * delta)
 	else:
 		coyote_timer -= delta
+		gravity = lerp(gravity, MAX_GRAVITY, 12.0 * delta)
 
 	# Jump Buffer
 	if Input.is_action_just_pressed("Jump"):
 		jump_buffer = JUMP_BUFFER_TIME
-		jumped = true
 	else:
 		jump_buffer -= delta
 
@@ -77,7 +81,12 @@ func _physics_process(delta: float) -> void:
 		jump()
 		jump_buffer = 0.0
 		coyote_timer = 0.0
-
+	
+	if is_grounded and is_on_floor():
+		$"Fall Particle".emitting = true
+		
+	is_grounded = is_on_floor()
+	
 	# Horizontal Movement
 	var direction := Input.get_axis("Left", "Right")
 
@@ -94,10 +103,28 @@ func _physics_process(delta: float) -> void:
 			knockback = Vector2.ZERO
 	else:
 		pass
+	# head Nudge
 	
+	if velocity.y < JUMP_VELOCITY/2.0:
+		var Head_collision: Array = [$Left_HeadNudge.is_colliding(), $Left_HeadNudge2.is_colliding(), $Right_HeadNudge.is_colliding(), $Right_HeadNudge2.is_colliding() ]
+		if Head_collision.count(true) == 1:
+			if Head_collision[0]:
+				global_position.x += 1.75
+			if Head_collision[2]:
+				global_position.x -= 1.75
+				
+				
 	
+	# LEDGE HOP
+	
+	#if velocity.y > -30 and velocity.y < -5 and abs (velocity.x) > 3:
+		#if $Left_LedgeHop.is_colliding() and ! $Left_LedgeHop2.is_colliding() and velocity. x < 0:
+			#velocity.y += JUMP_VELOCITY/3.25
+		#if $Right_LedgeHop.is_colliding() and !$Right_LedgeHop2.is_colliding() and velocity.x > 0:
+			#velocity.y += JUMP_VELOCITY/3.25
+				
 	handle_facing() 
-	move_and_slide()
+	move_and_slide() 
 	squish_and_stretch()
 	update_marker()
 

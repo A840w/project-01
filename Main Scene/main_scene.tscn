@@ -28,8 +28,14 @@ size = Vector2(49, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei6di"]
 size = Vector2(49, 84)
 
-[sub_resource type="LabelSettings" id="LabelSettings_rpaqd"]
-font_size = 85
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0iv6"]
+size = Vector2(49, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvcfu"]
+size = Vector2(45.5, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1idbs"]
+size = Vector2(55.875, 8)
 
 [node name="Main Scene" type="Node2D" unique_id=706466564]
 
@@ -80,12 +86,37 @@ position = Vector2(280, 176)
 shape = SubResource("RectangleShape2D_ei6di")
 debug_color = Color(1, 1, 1, 0.70600003)
 
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="prototype" unique_id=929281755]
+position = Vector2(575, 68)
+shape = SubResource("RectangleShape2D_u0iv6")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="prototype" unique_id=204899495]
+position = Vector2(694.75, 73)
+shape = SubResource("RectangleShape2D_qvcfu")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="prototype" unique_id=394565508]
+position = Vector2(416.25, 52)
+shape = SubResource("RectangleShape2D_1idbs")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="prototype" unique_id=529144403]
+position = Vector2(528.125, 28)
+shape = SubResource("RectangleShape2D_1idbs")
+debug_color = Color(1, 1, 1, 0.70600003)
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="prototype" unique_id=1565105590]
+position = Vector2(644.0625, -28)
+shape = SubResource("RectangleShape2D_1idbs")
+debug_color = Color(1, 1, 1, 0.70600003)
+
 [node name="Camera Node" type="Node" parent="." unique_id=976252406]
 
 [node name="Camera" type="Camera2D" parent="Camera Node" unique_id=1912883421]
 position = Vector2(80, 168)
 offset = Vector2(60, 0)
-zoom = Vector2(5, 5)
+zoom = Vector2(6, 6)
 process_callback = 0
 script = ExtResource("2_el5ou")
 
@@ -94,7 +125,7 @@ script = ExtResource("2_el5ou")
 [node name="ColorRect" type="ColorRect" parent="BG" unique_id=1367092585]
 z_index = -41
 offset_left = -272.0
-offset_top = -73.0
+offset_top = -160.0
 offset_right = 1280.0
 offset_bottom = 384.0
 color = Color(0.21604466, 0.21604472, 0.21604463, 1)
@@ -136,11 +167,3 @@ position = Vector2(216, 216)
 
 [node name="Spike2" parent="." unique_id=210531920 instance=ExtResource("3_rpaqd")]
 position = Vector2(199.99998, 167.99997)
-
-[node name="Label" type="Label" parent="." unique_id=2038866139]
-offset_left = 518.0
-offset_top = -5.0
-offset_right = 678.0
-offset_bottom = 111.0
-text = "Boo"
-label_settings = SubResource("LabelSettings_rpaqd")
